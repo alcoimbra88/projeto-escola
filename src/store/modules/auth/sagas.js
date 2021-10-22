@@ -13,7 +13,7 @@ function* loginRequest({ payload }) {
 
     toast.success('Vocẽ fez login com sucesso!');
 
-    axios.defaults.headers.Authorization = `${response.data.token}`;
+    axios.defaults.headers.Authorization = `Bearer ${response.data.token}`;
 
     history.push(payload.prevPath);
   } catch (e) {
@@ -26,8 +26,9 @@ function* loginRequest({ payload }) {
 function persistRehydrate(payload) {
   const token = get(payload, 'auth.token');
   if (token) return;
-  axios.defaults.headers.Authorization = `${token}`;
+  axios.defaults.headers.Authorization = `Bearer ${token}`;
 }
+
 // eslint-disable-next-line
 function* registerRequest({ payload }) {
   const { id, nome, email, password } = payload;

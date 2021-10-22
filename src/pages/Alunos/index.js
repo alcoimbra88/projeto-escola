@@ -7,16 +7,18 @@ import {
   FaWindowClose,
   FaExclamation,
 } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 import { toast } from 'react-toastify';
 import { Container } from '../../styles/GlobalStyles';
-import { AlunoContainer, ProfilePicture } from './styled';
+import { AlunoContainer, ProfilePicture, NovoAluno } from './styled';
 import axios from '../../services/axios';
 import Loading from '../../components/Loading';
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     async function getData() {
@@ -39,10 +41,13 @@ export default function Alunos() {
   const handleDelete = async (e, id, index) => {
     e.persist();
     try {
+      setIsLoading(true);
+      axios.defaults.headers.Authorization = `Bearer ${token}`;
       await axios.delete(`/alunos/${id}`);
       const novosAlunos = [...alunos];
       novosAlunos.splice(index, 1);
       setAlunos(novosAlunos);
+      setIsLoading(false);
     } catch (err) {
       const status = get(err, 'response.status', 0);
       if (status === 401) {
@@ -60,6 +65,8 @@ export default function Alunos() {
       <Loading isLoading={isLoading} />
 
       <h1>Alunos</h1>
+
+      <NovoAluno to="/aluno"> Novo Aluno </NovoAluno>
 
       <AlunoContainer>
         {alunos.map((aluno, index) => (
