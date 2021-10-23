@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import Loading from '../../components/Loading';
@@ -16,13 +16,14 @@ export default function Fotos({ match }) {
   const [isLoading, setIsLoading] = useState(false);
   const [foto, setFoto] = useState('');
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     const getData = async () => {
       try {
         setIsLoading(true);
         const { data } = await axios.get(`/alunos/${id}`);
-        setFoto(get(data, 'Foto[0].url', ''));
+        setFoto(get(data, 'Fotos[0].url', ''));
         setIsLoading(false);
       } catch {
         toast.error('Erro ao obter imagem');
@@ -37,6 +38,8 @@ export default function Fotos({ match }) {
   const handleChange = async (e) => {
     const file = e.target.files[0];
     const fotoURL = URL.createObjectURL(file);
+
+    axios.defaults.headers.Authrization = `Bearer ${token}`;
 
     setFoto(fotoURL);
 

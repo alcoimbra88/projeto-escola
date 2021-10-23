@@ -85,12 +85,12 @@ export default function Aluno({ match }) {
       formErrors = true;
     }
 
-    if (!isFloat(peso)) {
+    if (!isFloat(String(peso))) {
       toast.error('Peso invalido');
       formErrors = true;
     }
 
-    if (!isFloat(altura)) {
+    if (!isFloat(String(altura))) {
       toast.error('Altura invalida');
       formErrors = true;
     }
@@ -148,8 +148,9 @@ export default function Aluno({ match }) {
       {id && (
         <ProfilePicture>
           {foto ? <img src={foto} alt={nome} /> : <FaUserCircle size={180} />}
-          <Link to={`/fotos/${id}`} />
-          <FaEdit size={24} />
+          <Link to={`/fotos/${id}`}>
+            <FaEdit size={24} />
+          </Link>
         </ProfilePicture>
       )}
 

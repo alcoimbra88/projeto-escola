@@ -14,8 +14,8 @@ export const Form = styled.form`
     justify-content: center;
     background: #eee;
     border: 5px dashed ${colors.primaryColor};
-    cursor: pointer;
     margin: 30px auto;
+    cursor: pointer;
     border-radius: 50%;
     overflow: hidden;
   }
