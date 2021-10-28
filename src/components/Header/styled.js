@@ -1,16 +1,20 @@
 import styled from 'styled-components';
-import { primaryColor } from '../../config/colors';
+import * as colors from '../../config/colors';
 
 export const Nav = styled.nav`
-  background: ${primaryColor};
+  background: #fff;
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   a {
-    color: #fff;
+    color: ${colors.textDarkColor};
     margin: 0 10px 0;
     font-weight: bold;
+  }
+
+  #linkHome {
+    margin-left: 30px;
   }
 `;

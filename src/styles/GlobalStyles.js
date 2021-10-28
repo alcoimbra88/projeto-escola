@@ -13,7 +13,7 @@ export default createGlobalStyle`
   body{
     font-family: sans-serif;
     background: ${colors.primaryDarkColor};
-    color: ${colors.primaryDarkColor};
+    color: ${colors.textDarkColor};
   }
 
   html, body, #root {
@@ -22,7 +22,7 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
-    background: ${colors.primaryColor};
+    background: ${colors.textDarkColor};
     border: none;
     color:#fff;
     padding: 10px 20px;
@@ -32,12 +32,13 @@ export default createGlobalStyle`
     }
 
   button:hover{
-    filter: brightness(65%)
+    background-color: ${colors.primaryDarkColor};
+    color: black;
   }
 
   a{
     text-decoration: none;
-    color: ${colors.primaryColor};
+    color: ${colors.textDarkColor};
   }
 
   ul{
@@ -50,7 +51,7 @@ export default createGlobalStyle`
   }
 
   body .Toastify .Toastify__toast-container .Toastify__toast--error {
-    background: ${colors.errorColor};
+    background: #d20000;
     color: #fff;
   }
 `;

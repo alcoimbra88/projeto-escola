@@ -14,6 +14,10 @@ export const AlunoContainer = styled.div`
   div + div {
     border-top: 1px solid #eee;
   }
+
+  #deleteButton {
+    color: #d20000;
+  }
 `;
 
 export const ProfilePicture = styled.div`

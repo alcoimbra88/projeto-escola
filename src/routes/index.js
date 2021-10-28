@@ -9,11 +9,13 @@ import Fotos from '../pages/Fotos';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
+import Home from '../pages/Home';
 
 export default function Routes() {
   return (
     <Switch>
-      <MyRoute exact path="/" component={Alunos} isClosed={false} />
+      <MyRoute exact path="/" component={Home} />
+      <MyRoute exact path="/alunos" component={Alunos} isClosed={false} />
       <MyRoute exact path="/aluno/:id/edit" component={Aluno} isClosed />
       <MyRoute exact path="/aluno/" component={Aluno} isClosed />
       <MyRoute exact path="/fotos/:id" component={Fotos} isClosed />

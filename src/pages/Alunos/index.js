@@ -66,7 +66,7 @@ export default function Alunos() {
 
       <h1>Alunos</h1>
 
-      <NovoAluno to="/aluno"> Novo Aluno </NovoAluno>
+      <NovoAluno to="/aluno"> Adicionar Aluno </NovoAluno>
 
       <AlunoContainer>
         {alunos.map((aluno, index) => (
@@ -86,7 +86,7 @@ export default function Alunos() {
               <FaEdit size={16} />
             </Link>
             <Link onClick={handleDeleteAsk} to={`/aluno/${aluno.id}/delete`}>
-              <FaWindowClose size={16} />
+              <FaWindowClose id="deleteButton" size={16} />
             </Link>
             <FaExclamation
               size={16}

@@ -1,11 +1,4 @@
 import React from 'react';
-import {
-  FaHome,
-  FaSignInAlt,
-  FaUserAlt,
-  FaCircle,
-  FaPowerOff,
-} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -17,6 +10,8 @@ export default function Header() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
 
+  const userEmail = useSelector((state) => state.auth.user.nome);
+
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(actions.loginFailure());
@@ -25,24 +20,34 @@ export default function Header() {
 
   return (
     <Nav>
-      <Link to="/">
-        <FaHome size={24} />
+      {isLoggedIn ? <span>Bem vindo {userEmail} ! </span> : <span />}
+
+      <Link id="linkHome" to="/">
+        <span>Home</span>
       </Link>
+
+      {isLoggedIn ? (
+        <Link to="/alunos">
+          <span> Lista de Alunos </span>
+        </Link>
+      ) : (
+        <Link to="/login">
+          <span> Lista de Alunos </span>
+        </Link>
+      )}
       <Link to="/register">
-        <FaUserAlt size={24} />
+        <span> Cadastro de Usuarios</span>
       </Link>
 
       {isLoggedIn ? (
         <Link onClick={handleLogout} to="/logout">
-          <FaPowerOff size={24} />
+          <span>Logout</span>
         </Link>
       ) : (
         <Link to="/login">
-          <FaSignInAlt size={24} />
+          <span>Login</span>
         </Link>
       )}
-
-      {isLoggedIn && <FaCircle size={24} color="66ff33" />}
     </Nav>
   );
 }
