@@ -12,12 +12,12 @@ export default createGlobalStyle`
 
   body{
     font-family: sans-serif;
-    background: ${colors.primaryDarkColor};
+    background: #fff;
     color: ${colors.textDarkColor};
   }
 
   html, body, #root {
-    height: 100%;
+    height: 90vh;
   }
 
   button {
@@ -59,7 +59,7 @@ export default createGlobalStyle`
 export const Container = styled.section`
   max-width: 480px;
   background: #fff;
-  margin: 30px auto;
+  margin: 100px auto 0 auto;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

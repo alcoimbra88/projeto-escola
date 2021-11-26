@@ -6,7 +6,10 @@ export const Nav = styled.nav`
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
 
   a {
     color: ${colors.textDarkColor};

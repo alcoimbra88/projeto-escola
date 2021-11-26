@@ -23,7 +23,7 @@ export default function Header() {
       {isLoggedIn ? <span>Bem vindo {userEmail} ! </span> : <span />}
 
       <Link id="linkHome" to="/">
-        <span>Home</span>
+        <a href=" ">Home</a>
       </Link>
 
       {isLoggedIn ? (
